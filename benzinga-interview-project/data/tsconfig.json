@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true, /* Parse in strict mode and emit "use strict" for each source file. */
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "emitDeclarationOnly": true,
+    "lib": ["ESNext", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true, /* Raise error on 'this' expressions with an implied 'any' type. */
+    "useDefineForClassFields": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strict": true, /* Enable all strict type-checking options. */
+    "strictFunctionTypes": true, /* Enable strict checking of function types. */
+    "strictNullChecks": true, /* Enable strict null checks. */
+    "strictPropertyInitialization": true, /* Enable strict checking of property initialization in classes. */
+    "target": "es2015",
+    "types": []
+    /* Module Resolution Options */
+  },
+  "exclude": ["node_modules"],
+  "files": [
+    "./src/index.ts",
+    "./src/index.d.ts",
+  ]
+}

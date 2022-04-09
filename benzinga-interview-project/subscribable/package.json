@@ -1,0 +1,51 @@
+{
+  "name": "@benzinga/subscribable",
+  "version": "1.0.0",
+  "description": "This is package containing Benzinga subscribable helpers.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": "git@gitlab.benzinga.io:benzinga/fusion.git",
+  "author": "Zaid<Zaid@benzinga.com>",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://gitlab.benzinga.io/api/v4/projects/${CI_PROJECT_ID}/packages/npm/"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --mode production",
+    "build:dev": "cross-env NODE_ENV=development webpack --config ./webpack.config.js --mode none",
+    "prettier": "prettier src/**/*.ts --write",
+    "precommit": "yarn run prettier && yarn run lint:fix",
+    "lint:ci": "yarn run lint",
+    "lint": "yarn run lint:file src/",
+    "lint:file": "eslint --ext .ts,.tsx,.js --no-error-on-unmatched-pattern --ignore-pattern \"**/*.min.js\" --cache --cache-location node_modules/.eslint-cache/",
+    "lint:fix": "yarn run lint --fix",
+    "lint:file:fix": "yarn run lint:file --fix",
+    "start": "yarn run build:dev -- --watch"
+  },
+  "devDependencies": {
+    "@types/prettier": "2.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.0",
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "eslint-plugin-typescript-sort-keys": "^1.5.0",
+    "prettier": "2.2.0",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.2.2",
+    "webpack": "5.11.1",
+    "webpack-cli": "^4.3.1"
+  },
+  "lint-staged": {
+    "*.[tj]{sx,s}": [
+      "eslint --ext .ts,.tsx,.js --no-error-on-unmatched-pattern --ignore-pattern \"**/*.min.js\" --cache"
+    ]
+  }
+}
