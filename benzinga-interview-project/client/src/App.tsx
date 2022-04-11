@@ -1,11 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { } from '@benzinga/data'
+import LoginFormik from './Login';
 
 function App() {
   return (
     <div className="App">
-      <div>hello</div>
+      <LoginFormik email="" password="" />
     </div>
   );
 }
