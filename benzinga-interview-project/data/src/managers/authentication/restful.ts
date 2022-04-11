@@ -10,7 +10,7 @@ export class AuthenticationRestful extends RestfulClient {
 
   public login = (email: string, password: string, fingerprint?: unknown): SafePromise<Authentication> => {
     const url = this.URL('api/v1/account/login/');
-    return this.post(url, { email, fingerprint, password });
+    return this.post(url, { email, fingerprint, password }, { allowsAnonymousAuth: true });
   };
 
   public logout = (): SafePromise<undefined> => {
@@ -20,7 +20,7 @@ export class AuthenticationRestful extends RestfulClient {
 
   public forgotPassword = (email: string): SafePromise<undefined> => {
     const url = this.URL('api/v1/account/reset/password/request/');
-    return this.post(url, { email });
+    return this.post(url, { email }, { allowsAnonymousAuth: true });
   };
 
   public changePassword = (currentPassword: string, newPassword: string): SafePromise<undefined> => {
@@ -30,7 +30,7 @@ export class AuthenticationRestful extends RestfulClient {
 
   public register = (user: RegisterUser): SafePromise<Authentication> => {
     const url = this.URL('api/v1/account/register/');
-    return this.post(url, user);
+    return this.post(url, user, { allowsAnonymousAuth: true });
   };
 
   public refresh = (token?: string): SafePromise<undefined> => {
@@ -58,6 +58,6 @@ export class AuthenticationRestful extends RestfulClient {
     if (token !== undefined) {
       headers = { authorization: `session ${token}` };
     }
-    return this.get(url, { headers, session: { getBenzingaToken: () => token } });
+    return this.get(url, { allowsAnonymousAuth: true, headers, session: { getBenzingaToken: () => token } });
   };
 }
